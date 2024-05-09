@@ -1,7 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+// Database connection parameters
+$servername = "localhost"; // Change this if your MySQL server is on a different host
+$username = "root"; // Change this to your MySQL username
+$password = ""; // Change this to your MySQL password
+$database = "crypto"; // Change this to your database name
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $database);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    
+
+    // SQL query to check if the user exists and password matches
+    $sql = "SELECT * FROM `login` WHERE user = '$username' AND password =  '$password'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        // User found, redirect to desired URL
+        header("Location: http://localhost/CryptoCurrencyExchange/index.php");
+        exit();
+    } else {
+        
+    }
+}
+?>
 
 <head>
     <meta charset="utf-8">
