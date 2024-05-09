@@ -10,7 +10,7 @@ $username = "root"; // Change this to your MySQL username
 $password = ""; // Change this to your MySQL password
 $database = "crypto"; // Change this to your database name
 
-// Create connection
+// Create connection.
 $conn = new mysqli($servername, $username, $password, $database);
 
 // Check connection
